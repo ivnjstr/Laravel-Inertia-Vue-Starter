@@ -35,7 +35,7 @@ const submit = () => {
         onFinish: () => form.reset("password", "password_confirmation"),
         // means we the form processing is finished or submitted  we can use the form.reset to reset the whole form of specific field but we want to reset a password and password_confirmation
     })
-        //Now attached submit to form    
+        //Now attached submit to form   
 }
     
 </script>
@@ -55,11 +55,11 @@ const submit = () => {
             <!-- create component for Error messages templates-->
         <ErrorMessages :error="form.errors" />
 
-
-        <form @submit.prevent="submit" class="space-y-6">
+        <!-- if dd working properly and getting the data > go and remove dd and make a validation-->
+        <form @submit.prevent="submit" class="space-y-6"> 
             <InputField label="Name" icon="id-badge" type="text" placeholder="Enter Name" v-model="form.name"/>
 
-            <InputField label="Email" type="email" icon="at" placeholder="Enter Email" v-model="form.email" />
+            <InputField label="Email"  icon="at" placeholder="Enter Email" v-model="form.email" />
 
             <InputField label="Password" type="password" icon="key" placeholder="Enter Password" v-model="form.password"/>
 
