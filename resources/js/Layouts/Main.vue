@@ -2,16 +2,6 @@
 import { switchTheme } from '../theme';
 import NavLink from '../Components/NavLink.vue'; // import NavLink
 
-</script>
-
-<template>
-    <header class="bg-slate-800 text-white">
-        <nav class="p-6 mx-auto max-w-screen-lg flex items-center justify-between">
-
-            <NavLink routeName="home" componentName="Home">Home</NavLink> <!-- this is inertia link-->
-
-            <div class="flex items-center space-x-6">
-
                 <NavLink routeName="register" componentName="Auth/Register">
                     Register
                 </NavLink>
