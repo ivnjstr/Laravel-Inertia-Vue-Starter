@@ -42,12 +42,13 @@ const submit = () => {
 
 
 <template>
+    <Head title="- Register" />  <!--Add head so it appear in the title that we are in the register section-->
     <!--Use our Container-->
     <Container class="w-1/2">
         <div class="mb-8 text-center">
             <Title>Register a new account</Title>
             <p>Already have an account?
-                <TextLink routeName="home" label="Login"/>
+                <TextLink routeName="login" label="Login"/>
             </p> <!--and also login as link-->
         </div>
 
@@ -55,7 +56,7 @@ const submit = () => {
             <!-- create component for Error messages templates-->
         <ErrorMessages :error="form.errors" />
 
-        <!-- if dd working properly and getting the data > go and remove dd and make a validation-->
+        <!-- if dd working properly and getting the data > go and remove dd and make a validationz-->
         <form @submit.prevent="submit" class="space-y-6"> 
             <InputField label="Name" icon="id-badge" type="text" placeholder="Enter Name" v-model="form.name"/>
 
