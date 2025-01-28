@@ -3,6 +3,7 @@
 //Now create a Route for register
 
 use App\Http\Controllers\Auth\AuthenticateController;
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,18 @@ Route::middleware('auth')->group(function () {
     //----------------Logout--------------------//
     Route::post('/logout', [AuthenticateController::class, 'destroy'])->name('logout');
     // now create function of destroy method in AuthenticateController.php
+
+
+    //----------------Email Verification--------------------//
+    Route::get('/email/verify', [EmailVerificationController::class, 'notice'])->name('verification.notice');
+
+    //----------------2nd route--------------------//
+    Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'handler'])->middleware('signed')->name('verification.verify');
+    // we have a get route that goes to same route but we have 2 dinamic value id and hash that laravel handle filling those value  
+    // in middleware delete auth and keep that signed
+
+    //----------------3nd route--------------------//
+    Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'] )->middleware('throttle:6,1')->name('verification.send');
 });
 
 
