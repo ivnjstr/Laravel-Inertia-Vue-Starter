@@ -33,7 +33,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/reset-password/{token}', [ResetPasswordController::class, 'resetForm'])->name('password.reset');
     // we have a get route that is going to show a form again and it has a {token} which is going to be a dynamic value provided by the laravel 
 
-    Route::post('/reset-password', [ResetPasswordController::class, 'resetHandlerr'])->name('password.update');
+    Route::post('/reset-password', [ResetPasswordController::class, 'resetHandler'])->name('password.update');
 
 });
 //Also we want to apply the guest middleware to all of this and for that we can just group them so we don’t have to repeat ourselves 
