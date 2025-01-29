@@ -46,7 +46,7 @@ class ResetPasswordController extends Controller
         ]); // create a ResetPassword.vue
     }
 
-    public function resetHandler(Request $request) {
+    public function resetHandlerr(Request $request) {
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
