@@ -5,6 +5,7 @@
 use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,6 +23,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthenticateController::class, 'create'])->name('login');
     // we also have a method to handle that login 
     Route::post('/login', [AuthenticateController::class, 'store']);
+
+    //----------------Reset Password--------------------//
+    Route::get('/forgot-password', [ResetPasswordController::class, 'requestPass'])->name('password.request');
+    Route::post('/forgot-password', [ResetPasswordController::class, 'sendEmail'])->name('password.email');
+
+    //the first 2 routes are use for requesting a password and the next one are actually handling the reset password
+
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'resetForm'])->name('password.reset');
+    // we have a get route that is going to show a form again and it has a {token} which is going to be a dynamic value provided by the laravel 
+
+    Route::post('/reset-password', [ResetPasswordController::class, 'resetHandler'])->name('password.update');
+
 });
 //Also we want to apply the guest middleware to all of this and for that we can just group them so we don’t have to repeat ourselves 
 // Now import this document from out web.php
@@ -44,10 +57,3 @@ Route::middleware('auth')->group(function () {
     //----------------3nd route--------------------//
     Route::post('/email/verification-notification', [EmailVerificationController::class, 'resend'] )->middleware('throttle:6,1')->name('verification.send');
 });
-
-
-
-
-
-
-

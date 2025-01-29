@@ -12,7 +12,9 @@ class AuthenticateController extends Controller
     public function create() 
     {
         //our create method is going to return the login view  > firts create that inside our resources/js/pages/Auth create Login.vue
-        return Inertia::render('Auth/Login');
+        return Inertia::render('Auth/Login', [
+            'status' => session('status')
+        ]);
 
     }
 
