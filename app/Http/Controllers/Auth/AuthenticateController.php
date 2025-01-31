@@ -34,7 +34,7 @@ class AuthenticateController extends Controller
             $request->session()->regenerate();
             //this is the mwthod that laravel documentation recommend that we need to do when we are authrntication the user and then when its done we want to redirect the user to their dashboard or to the intended place.
             //example if the user about to create a post and needed to logged in they would go back to that page instead of home page.
-            return redirect()->intended();
+            return redirect()->intended('dashboard');
         } // do this part if the credention is correct but if its not
 
         return back()->withErrors([

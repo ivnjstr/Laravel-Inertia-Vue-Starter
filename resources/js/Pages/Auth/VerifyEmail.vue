@@ -11,7 +11,6 @@ const form = useForm({ });
 
 //create submit function
 const submit = () => {
-    console.log("Submitting form...");
     form.post(route('verification.send'));
     // the route we use is last route we created in email verification which is the verification.send
 };
