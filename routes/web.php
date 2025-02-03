@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,11 +29,11 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
-
-
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::inertia('/', 'Home')->name('home');
-// });
-Route::inertia('/', 'Home')->name('home');
+Route::get('/', [ListingController::class, 'index'])->name('home');
 //->middleware('verified')
+Route::resource('listing', ListingController::class)->except('index');
+//except('index') passing the name or methods we want to exclude 
+
+
+
 require __DIR__ . '/auth.php'; //import the auth document

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
+use Psy\Readline\Hoa\Console;
 
 class ProfileController extends Controller
 {
@@ -20,6 +21,7 @@ class ProfileController extends Controller
     }
 
     public function updateInfo(Request $request){
+        
         //dd($request);
         //first we need to validate and save to database 
         $fields = $request->validate([

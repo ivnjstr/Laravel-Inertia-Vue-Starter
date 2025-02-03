@@ -28,7 +28,7 @@
     }
     // if we click the button we want to submit a request to that verification send route and this is called a manual visit to a route
 
-
+    console.log(form);
 </script>
 
 <template>
@@ -36,11 +36,13 @@
         <div class="mb-6">
             <Title>Update Information</Title>
             <p>Update your account's profile information adn email address.</p>
+            
         </div>
 
         
          <!--Error messages-->
         <ErrorMessages :error="form.errors" />
+        <p v-if="form.recentlySuccessful" class="text-green-500 font-medium mb-4">Saved!</p>
 
 
         <form
@@ -60,6 +62,8 @@
                 </p>
                 
             </div>
+
+            
 
             <PrimaryBtn :disabled="form.processing" >Save</PrimaryBtn>
         </form>
