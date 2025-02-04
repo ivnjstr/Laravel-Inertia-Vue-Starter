@@ -13,14 +13,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->id(); 
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); //means if the user deleted then their listing are deleted as well
             $table->string('title');
             $table->text('desc');
+            // id to text column are required
+
             $table->string('tags')->nullable();
             $table->string('email')->nullable();
             $table->string('link')->nullable();
             $table->string('image')->nullable();
+            
             $table->boolean('approved')->default(false);
             $table->timestamps();   
         });

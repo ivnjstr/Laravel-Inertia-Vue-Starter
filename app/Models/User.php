@@ -48,5 +48,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function listings(){
         return $this->hasMany(Listing::class);
-    }
+    } 
+    //means this user class has many listings and pass our listing class in here 
+    //This specifies that the current model has multiple related Listing records.
 }

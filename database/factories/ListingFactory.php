@@ -18,9 +18,9 @@ class ListingFactory extends Factory
     {
         return [
             //in this array we can pass all the properties our listing table need 
-            'user_id' => fake()->randomElement([1,2]), //the value of user id either one or two at the moment we dont have a user
-            'title' => fake()->sentence(10),
-            'desc' => fake()->paragraph(12),
+            'user_id' => fake()->randomElement(array: [1,2]), //the value of user id either one or two at the moment we dont have a user
+            'title' => fake()->sentence(nbWords: 10),
+            'desc' => fake()->paragraph(nbSentences: 12),
             'email' => fake()->email(),
             'link' => fake()->url(),
             'tags' => fake()->randomElement([
@@ -32,7 +32,7 @@ class ListingFactory extends Factory
             'approved' => 1
             //1 means true
             // we will have them all approved
-            //image that can be null 
+            //image that automatically null 
 
             //So this is out listing factory we can use it in the database seeder 
         ];
